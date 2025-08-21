@@ -38,7 +38,7 @@ class CategoryProductController extends Controller
 
         $photo = $request->file('photo');
         $photoName = time() . '_' . $photo->getClientOriginalName();
-        $photoPath = 'img/category_photo/' . $photoName;
+        $photoPath = 'img/category_product_photo/' . $photoName;
 
         $photo->move(base_path('public/img/category_product_photo'), $photoName);
 

@@ -44,12 +44,12 @@
                                     </th>
                                     <th scope="col"
                                         class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                                        Kategori
+                                        Name
                                     </th>
                                     <th scope="col"
                                         class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                                        Gambar
-                                    </th>
+                                        Photo
+                                    </th>   
                                     <th scope="col"
                                         class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
                                         Deskripsi
@@ -69,7 +69,7 @@
                                         </td>
                                         <td
                                             class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            <img src="{{ asset('storage/' . $category->image) }}" alt="{{ $category->name }}" class="w-32 h-32 object-cover" />
+                                            <img src="{{ asset('$category->image) }}" alt="{{ $category->name }}" class="w-32 h-32 object-cover" />
                                         </td>
                                         <td class="p-4 space-x-2 whitespace-nowrap">
                                             <button type="button" data-modal-target="edit-category-{{ $category->id }}"

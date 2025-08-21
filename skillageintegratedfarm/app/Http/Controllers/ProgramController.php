@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\CategoryProgram;
 use Illuminate\Http\Request;
 use App\Models\Programs;
+use Illuminate\Support\Str; 
 use Illuminate\Support\Facades\Storage;
 
 class ProgramController extends Controller
@@ -43,7 +44,7 @@ class ProgramController extends Controller
         $image = $request->file('image');
         $imageName = time() . '_' . $image->getClientOriginalName();
         $imagePath = 'img/image_program/' . $imageName;
-        $image->move(base_path('public/img/image_program'), $imageName);
+        $image->move(base_path('img/image_program'), $imageName);
 
         // Handle document upload
         $document = $request->file('document_program');
@@ -53,13 +54,14 @@ class ProgramController extends Controller
 
         // Create new program
         Programs::create([
-            'name' => $request->name,
-            'image' => $imagePath,
-            'description' => $request->description,
-            'status' => $request->status,
-            'category_program_id' => $request->category_program_id,
-            'document_program' => $documentPath,
-        ]);
+    'name' => $request->name,
+    'slug' => Str::slug($request->name), 
+    'image' => $imagePath,
+    'description' => $request->description,
+    'status' => $request->status,
+    'category_program_id' => $request->category_program_id,
+    'document_program' => $documentPath,
+]);
 
         return redirect()->route('program.index')->with('success', 'Program created successfully');
     }
@@ -96,8 +98,8 @@ class ProgramController extends Controller
             }
             $image = $request->file('image');
             $imageName = time() . '_' . $image->getClientOriginalName();
-            $program->image = 'img/image_program/' . $imageName;
-            $image->move(base_path('public/img/image_program'), $imageName);
+            $program->image = 'img/image_program' . $imageName;
+            $image->move(base_path('img/image_program'), $imageName);
         }
 
         // Update document if uploaded

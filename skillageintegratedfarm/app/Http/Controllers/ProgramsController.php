@@ -21,7 +21,7 @@ class ProgramsController extends Controller
         $programs['programs']=Programs::with('program')->where('slug', $slug)->first();
         $programs['otherprograms'] = Programs::all();
         
-        return view('pages.detail-program', $programs);
+        return view('pages.detail-program', $programs);    
     }
 
 }
